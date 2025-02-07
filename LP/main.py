@@ -4,9 +4,18 @@ import sys
 from itertools import combinations
 import math
 
-from LP import *
-sys.path.append(r"C:\Users\Danny\Desktop\Git\Programming\tikzgrapher")
-from tikzgrapher import viz
+from LP import sigmapm,construct_kG,labeling_1_to_k
+home_path = r'C:\Users\baneg\OneDrive\Desktop\Git\Programming\tikzgrapher'
+office_path = r'C:\Users\Danny\Desktop\Git\Programming\tikzgrapher'
+
+hpath = r'C:\Users\baneg\OneDrive\Desktop\Git\Programming\graph_visualization'
+sys.path.append(home_path)
+sys.path.append(hpath)
+
+
+from tikzgrapher import *
+
+from graph_visualization import *
 #* graph creation tools *#
 
 # how to merge two graphs:
@@ -128,20 +137,21 @@ def trees(n):
 '''-----------------------------------------------------------------------------------'''
 
 # Create a bipartite test graph
-G = merge(path([1,2,3,4,5]),path([6,2,7]),path([8,9]))
+G = merge(star(0,[1,2,3,4,5]),path([6,7,8]))
 
+#viz([construct_kG(G, 3)])
+t = 2
 # Solve for a valid labeling
-labeled_G = sigmapm_graph_labeling(G)
+labeled_list = labeling_1_to_k(G,7)
+print(labeled_list)
+viz(labeled_list)
+
 def rename_nodes_by_labels(graph):
     """Rename nodes based on their assigned labels."""
     mapping = {node: graph.nodes[node].get("label", node) for node in graph.nodes()}  # Handles missing labels
     return nx.relabel_nodes(graph, mapping)
 
-labeled_G = rename_nodes_by_labels(labeled_G)
-viz([labeled_G])
+labeled_list = [rename_nodes_by_labels(g) for g in labeled_list]
 
-if labeled_G:
-    for node, data in labeled_G.nodes(data=True):
-        print(f"Node {node}: Label {data['label']}")
-else:
-    print("No valid labeling found.")
+
+visualize(21, labeled_list,  '123list',  'C:\\Users\\baneg\\OneDrive\\Desktop\\Git\\Python\\Research\\7 (mod 14)\\texgraph')

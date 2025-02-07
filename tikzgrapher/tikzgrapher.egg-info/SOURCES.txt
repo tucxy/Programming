@@ -1,0 +1,6 @@
+setup.py
+tikzgrapher.egg-info/PKG-INFO
+tikzgrapher.egg-info/SOURCES.txt
+tikzgrapher.egg-info/dependency_links.txt
+tikzgrapher.egg-info/requires.txt
+tikzgrapher.egg-info/top_level.txt
