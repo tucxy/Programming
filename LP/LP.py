@@ -14,19 +14,11 @@ def sigmapm(graph):
     labels = {v: Int(f'label_{v}') for v in graph.nodes()}
     for v in graph.nodes():
         s.add(And(labels[v] >= 0, labels[v] <= 2 * m - 1))
-        #debug
-        print(s.to_smt2())
-        result = s.check()
-        print("Result:", result)
     # Constraint 1: Unique labels
     for u in graph.nodes():
         for v in graph.nodes():
             if u != v:
                 s.add(labels[u] != labels[v])
-                #debug
-                print(s.to_smt2())
-                result = s.check()
-                print("Result:", result)
 
     # Constraint 2: Ordering constraint for bipartite edges
     components = list(nx.connected_components(graph))
@@ -52,16 +44,8 @@ def sigmapm(graph):
     for a, b in graph.edges():
         length = Int(f'len_{a}_{b}')
         s.add(length == Abs(labels[a] - labels[b]))
-        #debug
-        print(s.to_smt2())
-        result = s.check()
-        print("Result:", result)
 
         s.add(And(length >= 1, length <= m))
-        #debug
-        print(s.to_smt2())
-        result = s.check()
-        print("Result:", result)
 
         edge_lengths[(a, b)] = length
 
@@ -70,11 +54,6 @@ def sigmapm(graph):
         for (a2, b2), len2 in edge_lengths.items():
             if (a1, b1) != (a2, b2):
                 s.add(len1 != len2)
-                #debug
-                print(s.to_smt2())
-                result = s.check()
-                print("Result:", result)
-
     # Solve
     if s.check() == sat:
         model = s.model()
