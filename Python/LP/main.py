@@ -137,14 +137,13 @@ def trees(n):
 '''-----------------------------------------------------------------------------------'''
 
 # Create a bipartite test graph
-G = merge(star(0,[1,2,3,4,5]),path([6,7,8]))
+G = merge(star(0,[1,2,3,4,5,6]),path([7,8]))
 
 #viz([construct_kG(G, 3)])
 t = 2
 # Solve for a valid labeling
 labeled_list = labeling_1_to_k(G,7)
 print(labeled_list)
-viz(labeled_list)
 
 def rename_nodes_by_labels(graph):
     """Rename nodes based on their assigned labels."""
@@ -152,6 +151,5 @@ def rename_nodes_by_labels(graph):
     return nx.relabel_nodes(graph, mapping)
 
 labeled_list = [rename_nodes_by_labels(g) for g in labeled_list]
-
 
 visualize(21, labeled_list,  '123list',  'C:\\Users\\baneg\\OneDrive\\Desktop\\Git\\Python\\Research\\7 (mod 14)\\texgraph')

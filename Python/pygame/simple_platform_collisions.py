@@ -9,7 +9,7 @@ pygame.init() #! initiates pygame
 WINDOW_SIZE = (400,400) #* sets pixel area inside window
 screen = pygame.display.set_mode(WINDOW_SIZE,0,32) #! initiates window
 
-player = pygame.image.load('nyan_cat.png') #! initiates image object
+player = pygame.image.load(r'\pygame\nyan_cat.png') #! initiates image object
 
 #& Movement variables
 moving_right = False #initiates boolean variable to be used for moving right

@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run C++ file",
+      "type": "cppvsdbg",  // Use Windows debugger
+      "request": "launch",
+      "preLaunchTask": "C++: g++ build active file",  // Build before running
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",  // Executable path
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",  // Set working directory to the file's directory
+      "console": "integratedTerminal"  // **Runs in the integrated terminal** within VS Code
+    }
+  ]
+}
