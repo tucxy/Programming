@@ -1,0 +1,23 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+	  {
+		"label": "C++: g++ build active file",
+		"type": "shell",
+		"command": "g++",
+		"args": [
+		  "-g",  // Debugging symbols
+		  "${file}",  // The active file
+		  "-o",  // Output flag
+		  "${fileDirname}\\${fileBasenameNoExtension}.exe"  // Output .exe file in the same directory
+		],
+		"group": {
+		  "kind": "build",
+		  "isDefault": true  // Set this as the default build task
+		},
+		"problemMatcher": ["$gcc"],
+		"detail": "Generated task by Debugger"
+	  }
+	]
+  }
+  

@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run C++ file (Windows)",
+      "type": "cppvsdbg",  // Windows-specific debugger (vsdbg)
+      "request": "launch",
+      "preLaunchTask": "C++: g++ build active file",  // Automatically build the file before running
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",  // Path to the compiled executable
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${fileDirname}",  // Set the current directory to the file's directory
+      "console": "integratedTerminal"  // **This must be set to integratedTerminal**
+    }
+  ]
+}
