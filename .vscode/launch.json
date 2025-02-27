@@ -2,15 +2,25 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run C++ file",
-      "type": "cppvsdbg",  // Use Windows debugger
+      "name": "Debug C++",
+      "type": "cppdbg",
       "request": "launch",
-      "preLaunchTask": "C++: g++ build active file",  // Build before running
-      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",  // Executable path
+      "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "${fileDirname}",  // Set working directory to the file's directory
-      "console": "integratedTerminal"  // **Runs in the integrated terminal** within VS Code
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\msys64\\mingw64\\bin\\gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "build"
     }
   ]
 }

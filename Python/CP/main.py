@@ -4,7 +4,7 @@ import sys
 from itertools import combinations
 import math
 
-from LP import sigmapm,construct_kG,labeling_1_to_k
+from CP import sigmapm,construct_kG,labeling_1_to_k
 home_path = r'C:\Users\baneg\OneDrive\Desktop\Git\Programming\tikzgrapher'
 office_path = r'C:\Users\Danny\Desktop\Git\Programming\tikzgrapher'
 
@@ -137,7 +137,7 @@ def trees(n):
 '''-----------------------------------------------------------------------------------'''
 
 # Create a bipartite test graph
-G = merge(star(0,[1,2,3,4,5,6]),path([7,8]))
+G = merge(star(0,[1,2,3,4]),star(5,[6,7,8]))
 
 #viz([construct_kG(G, 3)])
 t = 2
